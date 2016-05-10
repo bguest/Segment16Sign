@@ -1,26 +1,26 @@
 #include "Segment.h"
 
 Segment::Segment(){
+  isOn = true;
 }
 
-Segment::Segment(uint8_t length){
-  //pixels[length] = new Pixel[length];
-
-  for(uint8_t i=0; i< length; i++){
-    pixels[i] = new Pixel();
+void Segment::init(Pixel p[], uint8_t start, uint8_t endPlus1){
+  uint8_t j = 0;
+  for(uint8_t i=start; i< endPlus1; i++){
+    pixels[j] = &p[i];
+    j++;
   }
-  _length = length;
-
+  length = endPlus1 - start;
   isOn = false;
-};
+}
 
 uint16_t Segment::pixelCount(){
-  return _length;
+  return length;
 }
 
 void Segment::toArray(CRGB array[], uint16_t &currIdx){
 
-  for(uint8_t i=0; i< _length; i++){
+  for(uint8_t i=0; i< length; i++){
     array[currIdx] = pixels[i] -> getColor();
     currIdx++;
   }
@@ -34,7 +34,7 @@ void Segment::setColor(uint8_t layer, CHSV color){
 }
 
 void Segment::setColor(CHSV color){
-  for(uint8_t i=0; i< _length; i++){
+  for(uint8_t i=0; i< length; i++){
     pixels[i] -> setColor(color);
  }
 }
@@ -51,7 +51,7 @@ void Segment::setHsv16(uint8_t layer, CHSV16 color){
 }
 
 void Segment::setHsv16(CHSV16 color){
-  for(uint8_t i=0; i< _length; i++){
+  for(uint8_t i=0; i< length; i++){
     pixels[i] -> setHsv16(color);
  }
 }

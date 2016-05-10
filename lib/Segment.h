@@ -13,7 +13,7 @@
 class Segment {
   public:
     Segment();
-    Segment(uint8_t length);
+    void init(Pixel pixels[], uint8_t start, uint8_t endPlus1);
     Pixel *pixels[4];
     bool isOn;
     uint16_t pixelCount();
@@ -27,7 +27,7 @@ class Segment {
     char orientation();
 
   private:
-    uint8_t _length;
+    uint8_t length;
 };
 
 #endif

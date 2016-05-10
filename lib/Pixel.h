@@ -18,6 +18,5 @@ class Pixel {
 
   private:
     CHSV16 hsv16;
-    CHSV color;
 };
 #endif

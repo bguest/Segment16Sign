@@ -26,7 +26,7 @@ void SolidFade::run(Sign &sign, uint8_t ci){
 
   for(uint8_t i = 0; i < LETTERS_COUNT; i++){
     clr.hue = (uint8_t)(hue16 >> 8);
-    Letter *letter = sign.letters[i];
+    Letter *letter = sign.letter(i);
     letter -> setColor(ci, clr);
     hue16 += letterStep[ci] << 8;
   }

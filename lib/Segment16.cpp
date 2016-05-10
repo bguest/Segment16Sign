@@ -2,16 +2,38 @@
 #include "Segment16.h"
 
 #define DATA_PIN 11
-#define CLOCK_PIN 10
+#define CLOCK_PIN 13
 
 Segment16::Segment16(void){
   isInsertMode = false;
 };
 
 void Segment16::init(){
+
+  Serial.begin(9600);
+  Serial1.begin(9600);
+
+  String prompt = "Type any character to start";
+  Serial.println(prompt);
+  Serial1.println(prompt);
+
+  Serial1.println("WOOT");
+  delay(500);  // Catch Due reset problem
+
+  keyboard.init();
+  sign.init();
+
   uint16_t pixel_count = sign.pixelCount();
-  leds = new CRGB[pixel_count];
   FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, pixel_count);
+}
+
+void Segment16::run(){
+  keyboard.run();
+  if(keyboard.isAvailable){
+    this->pushChar(keyboard.data);
+  }
+  this->show();
+  delay(5);
 }
 
 void Segment16::pushChar(uint32_t character){
@@ -27,13 +49,13 @@ void Segment16::pushChar(uint32_t character){
   }
 }
 
-void Segment16::show(void){
+void Segment16::show(){
 
   effects.run(sign);
 
   uint16_t currentPixel = 0;
   for(uint8_t i=0; i < LETTERS_COUNT; i++){
-    sign.letters[i] -> toArray(leds, currentPixel);
+    sign.letter(i) -> toArray(leds, currentPixel);
   }
   FastLED.show();
 };

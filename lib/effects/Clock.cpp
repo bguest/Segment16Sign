@@ -62,7 +62,7 @@ void Clock::run(Sign &sign, uint8_t layer){
       }else{
         to_letter = char(dspl + '0');
       }
-      sign.letters[letterIdx] -> setChar(to_letter);
+      sign.letter(letterIdx) -> setChar(to_letter);
       letterIdx--;
       remainder /= 10;
     }

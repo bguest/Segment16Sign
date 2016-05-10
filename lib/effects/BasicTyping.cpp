@@ -10,7 +10,7 @@ void BasicTyping::run(Sign &sign, uint8_t layer){
   // Set Characters
   for(uint8_t i=0; i < letters_count; i++){
     char current_char = sign.characters[i];
-    sign.letters[i] -> setChar(current_char);
+    sign.letter(i) -> setChar(current_char);
   }
 
 }

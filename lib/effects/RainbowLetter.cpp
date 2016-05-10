@@ -42,7 +42,7 @@ void RainbowLetter::run(Sign &sign, uint8_t ci){
   CHSV16 wave_color;
 
   for(uint8_t i=0; i<letters_count; i++){
-    Letter* curr_letter = sign.letters[i];
+    Letter* curr_letter = sign.letter(i);
     wave_color = curr_color;
     delta_hue = -delta_hue;
     wave_color.hue += delta_hue;

@@ -31,7 +31,7 @@ void Counter::run(Sign &sign, uint8_t layer){
   // Set Characters
   for(uint8_t i=letter_count; i>0; i--){
     display = remainder % 10;
-    sign.letters[i-1] -> setChar(char(display+'0'));
+    sign.letter(i-1) -> setChar(char(display+'0'));
     remainder /= 10;
   }
 }

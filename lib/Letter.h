@@ -32,12 +32,15 @@
 # NOTE: These are the segment numbers
 */
 
+#define NUM_2_PIXEL 10
+#define NUM_4_PIXEL 6
+
 class Letter {
 
   public:
     Letter();
-    Letter(uint8_t lengths[16]);
-    Segment *segments[16];
+    void init(uint8_t lengths[16]);
+    Segment* segment(uint8_t i);
     uint16_t pixelCount();
     void toArray(CRGB array[], uint16_t &currIdx);
     void setChar(char character);
@@ -48,6 +51,7 @@ class Letter {
     char currentChar;
 
   private:
-    uint8_t _lengths[16];
+    Pixel pixels[2*NUM_2_PIXEL+4*NUM_4_PIXEL];
+    Segment segments[16];
 };
 #endif

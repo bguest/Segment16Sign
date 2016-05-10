@@ -1,18 +1,20 @@
 #include "Sign.h"
 
-Sign::Sign(void){
+Sign::Sign(){}
+
+void Sign::init(){
 
   uint8_t lengths[LETTERS_COUNT][16] = {
-    {3, 2, 4, 4, 2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 2, 2},
+    {2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 2, 2},
     {2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 2, 2},
     {2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 2, 2},
     {2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 4, 4, 2, 2, 2, 2}
   };
 
   for(uint16_t i=0; i < LETTERS_COUNT; i++){
-    letters[i] = new Letter(lengths[i]);
+    letters[i].init(lengths[i]);
     for(uint16_t j=0; j<16; j++){
-      segments[(i*16)+j] = letters[i] -> segments[j];
+      segments[(i*16)+j] = letters[i].segment(j);
     }
   }
   //uint16_t pixel_count = this -> pixelCount();
@@ -41,19 +43,23 @@ void Sign::pushChar(char character, bool shouldPrint){
   this -> sanitize();
 
   for(uint8_t i=0; i< LETTERS_COUNT; i++){
-    letters[i] -> currentChar = characters[i];
+    letters[i].currentChar = characters[i];
   }
+}
+
+Letter* Sign::letter(uint8_t i){
+  return &letters[i];
 }
 
 void Sign::setCharacters(){
   for(uint8_t i=0; i<LETTERS_COUNT; i++){
-    this -> letters[i] -> setChar(characters[i]);
+    letters[i].setChar(characters[i]);
   }
 }
 
 void Sign::setLayer(uint8_t layer, bool isOn){
   for(uint8_t i=0; i<LETTERS_COUNT; i++){
-    letters[i] -> setLayer(layer, isOn);
+    letters[i].setLayer(layer, isOn);
   }
 }
 
@@ -66,7 +72,7 @@ void Sign::setWord(String word){
   this -> sanitize();
 
   for(uint8_t i=0; i<size; i++){
-    letters[i] -> setChar( characters[i] );
+    letters[i].setChar( characters[i] );
   }
 }
 
@@ -75,7 +81,7 @@ void Sign::_setWord(String word, uint8_t size){
   for(uint8_t i=0; i< size; i++){
     ctr = word.charAt(i);
     characters[i] = ctr;
-    letters[i] -> setChar( ctr );
+    letters[i].setChar( ctr );
   }
 }
 
@@ -107,7 +113,7 @@ uint16_t Sign::pixelCount(){
 
   uint16_t pixel_count = 0;
   for(uint8_t i = 0; i < LETTERS_COUNT; i++){
-    pixel_count += letters[i]->pixelCount();
+    pixel_count += letters[i].pixelCount();
   }
   _pixel_count = pixel_count;
   return pixel_count;
