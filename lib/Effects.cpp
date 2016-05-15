@@ -11,6 +11,7 @@
 #include "effects/Counter.cpp"
 #include "effects/BasicTyping.cpp"
 #include "effects/WordsEnter.cpp"
+#include "effects/Scrolling.cpp"
 #include "effects/SolidColor.cpp"
 #include "effects/SolidFade.cpp"
 #include "effects/RandomFade.cpp"
@@ -206,6 +207,10 @@ void Effects::updateTextEffect(){
       textEffect = &wordsEnter;
       desc = F("Words Enter\nkeys:kjKJ");
       break;
+    case SCROLLING:
+      textEffect = &scrolling;
+      desc = F("Scrolling\nkeys:uKJ/");
+      break;
     case LINES_ON:
       textEffect = &linesOn;
       desc = F("Lines On\nkeys:kj[]/p");
@@ -233,6 +238,7 @@ uint8_t Effects::nextColorEffect(uint8_t ci){
   this -> updateColorEffect(ci);
   return cColorEffect[ci];
 }
+
 uint8_t Effects::prevColorEffect(uint8_t ci){
   if(cColorEffect[ci] == 0){
     cColorEffect[ci] = COLOR_EFFECTS_COUNT - 1;

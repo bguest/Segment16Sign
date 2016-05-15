@@ -8,6 +8,7 @@
 #include "effects/Counter.h"
 #include "effects/BasicTyping.h"
 #include "effects/WordsEnter.h"
+#include "effects/Scrolling.h"
 #include "effects/SolidColor.h"
 #include "effects/SolidFade.h"
 #include "effects/RandomFade.h"
@@ -25,10 +26,11 @@
 #define COUNTER 2
 #define RANDOM_LETTERS 3
 #define WORDS_ENTER 4
-#define LINES_ON 5
-#define CLOCK 6
-#define RANDOM_SCROLL 7
-#define TEXT_EFFECTS_COUNT 8
+#define SCROLLING 5
+#define LINES_ON 6
+#define CLOCK 7
+#define RANDOM_SCROLL 8
+#define TEXT_EFFECTS_COUNT 9
 
 #define SOLID_COLORS 0
 #define SOLID_FADE 1
@@ -50,6 +52,7 @@ class Effects {
   private:
     RandomOn randomOn;
     BasicTyping basicTyping;
+    Scrolling scrolling;
     Counter counter;
     RandomLetters randomLetters;
     WordsEnter wordsEnter;
