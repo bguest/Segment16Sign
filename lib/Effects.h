@@ -87,6 +87,7 @@ class Effects {
     void setDefaults();
     uint8_t randomizeLayer;
     uint32_t randomizeTime;
+    bool shouldRandomize;
     void randomize();
 
     uint8_t nextTextEffect();

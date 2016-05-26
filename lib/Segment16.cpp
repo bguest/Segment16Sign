@@ -17,8 +17,8 @@ void Segment16::init(){
   Serial.println(prompt);
   Serial1.println(prompt);
 
-  Serial1.println("WOOT");
   delay(500);  // Catch Due reset problem
+  Serial1.println("WOOT");
 
   keyboard.init();
   sign.init();

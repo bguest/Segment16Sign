@@ -27,6 +27,7 @@
 const uint16_t CYCLE_TIME = 5;
 
 Effects::Effects(){
+  shouldRandomize = true;
   for(uint8_t i=0; i<LAYER_COUNT; i++){
     colorEffect[i] = &solidColor;
     cColorEffect[i] = SOLID_COLORS;
@@ -39,7 +40,7 @@ Effects::Effects(){
 void Effects::run(Sign &sign){
   unsigned long time = millis();
   if(time - lastRun < CYCLE_TIME){ return; }
-  if(time - lastTouched > randomizeTime){
+  if(shouldRandomize && time - lastTouched > randomizeTime){
     lastTouched = time;
     this -> randomize();
   }
@@ -98,6 +99,8 @@ void Effects::pushChar(char character){
     case 'R':
       Serial1.print("\nRESET");
       this -> reset(); break;
+    case 'A': val = shouldRandomize = !shouldRandomize;
+              desc = "Should Randomize"; break;
 
     case 'k': val = (textCycleTime -= periodStep);
               desc = CYCLE_TIME_STR; break;
