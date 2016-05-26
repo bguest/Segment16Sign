@@ -16,7 +16,13 @@ class Pixel {
     CHSV16 getHsv16();
     void setHsv16(CHSV16 clr);
 
+    uint8_t x();
+    uint8_t y();
+
+    void setXY(uint8_t x, uint8_t y);
+
   private:
     CHSV16 hsv16;
+    uint8_t u[2];
 };
 #endif

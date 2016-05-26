@@ -39,3 +39,15 @@ void Pixel::setHsv16(CHSV16 clr){
   hsv16 = clr;
 }
 
+uint8_t Pixel::x(){
+  return u[0];
+}
+
+uint8_t Pixel::y(){
+  return u[1];
+}
+
+void Pixel::setXY(uint8_t x, uint8_t y){
+  u[0] = x;
+  u[1] = y;
+}

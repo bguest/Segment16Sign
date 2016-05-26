@@ -23,6 +23,7 @@
 #include "effects/LinesOn.cpp"
 #include "effects/Clock.cpp"
 #include "effects/RandomScroll.cpp"
+#include "effects/FadedXY.cpp"
 
 const uint16_t CYCLE_TIME = 5;
 
@@ -283,6 +284,10 @@ void Effects::updateColorEffect(uint8_t ci){
     case WAVE_PIXELS:
       colorEffect[ci] = &wavePixels;
       desc = "Wave Pixels\nKeys:cCvVbBeEfs";
+      break;
+    case FADED_XY:
+      colorEffect[ci] = &fadedXY;
+      desc = "Faded XY\nKeys:";
       break;
   }
   Serial.println(desc);
