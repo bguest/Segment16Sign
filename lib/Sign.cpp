@@ -12,7 +12,7 @@ void Sign::init(){
   };
 
   for(uint16_t i=0; i < LETTERS_COUNT; i++){
-    letters[i].init(0, lengths[i]);
+    letters[i].init(i, lengths[i]);
     for(uint16_t j=0; j<16; j++){
       segments[(i*16)+j] = letters[i].segment(j);
     }

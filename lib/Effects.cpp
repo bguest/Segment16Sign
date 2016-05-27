@@ -97,10 +97,10 @@ void Effects::pushChar(char character){
   String desc;
 
   switch(character){
-    case 'R':
-      Serial1.print("\nRESET");
-      this -> reset(); break;
-    case 'A': val = shouldRandomize = !shouldRandomize;
+    case 'U': val = 0; this -> reset();
+              desc = "RESET"; break;
+
+    case 'Z': val = shouldRandomize = !shouldRandomize;
               desc = "Should Randomize"; break;
 
     case 'k': val = (textCycleTime -= periodStep);
@@ -275,19 +275,19 @@ void Effects::updateColorEffect(uint8_t ci){
       break;
     case RAINBOW_SEGMENT:
       colorEffect[ci] = &rainbowSegment;
-      desc = "Rainbow Segment\nKeys:cCvVbBrwefsFSdDx";
+      desc = "Rainbow Segment\nKeys:09cCvVbBrwefsFSdDx";
       break;
     case FADE_TO:
       colorEffect[ci] = &fadeTo;
-      desc = "FadeTo\nKeys:cCvVbBfs";
+      desc = "FadeTo\nKeys:09cCvVbBfs";
       break;
     case WAVE_PIXELS:
       colorEffect[ci] = &wavePixels;
-      desc = "Wave Pixels\nKeys:cCvVbBeEfs";
+      desc = "Wave Pixels\nKeys:09cCvVbBeEfs";
       break;
     case FADED_XY:
       colorEffect[ci] = &fadedXY;
-      desc = "Faded XY\nKeys:";
+      desc = "Faded XY\nKeys:09cCvVbBqQwWeErR";
       break;
   }
   Serial.println(desc);
