@@ -14,7 +14,7 @@ void Counter::randomize(uint8_t ci){
   count = random(0,9999);
 }
 
-void Counter::run(Sign &sign, uint8_t layer){
+void Counter::run(Sign &sign, EffectData &data, uint8_t layer){
   this -> off(sign);
   if( step != 0 ){ sign.textChanged = true; }
 

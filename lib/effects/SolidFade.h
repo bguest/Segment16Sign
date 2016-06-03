@@ -7,7 +7,7 @@ class SolidFade : public Effect{
   public:
     SolidFade();
     void reset();
-    void run(Sign &sign, uint8_t layer);
+    void run(Sign &sign, EffectData &data, uint8_t layer);
     bool pushChar(char character, uint8_t layer);
     void invertColors();
     void randomize(uint8_t ci);

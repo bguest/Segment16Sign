@@ -10,7 +10,7 @@ class WordsEnter : public Effect{
   public:
     WordsEnter();
     void reset();
-    void run(Sign &sign, uint8_t layer);
+    void run(Sign &sign, EffectData &data, uint8_t layer);
     bool pushInsert(char character);
     bool pushChar(char character, uint8_t layer);
     void randomize(uint8_t ci);

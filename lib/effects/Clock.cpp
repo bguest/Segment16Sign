@@ -15,7 +15,7 @@ void Clock::reset(){
   dilationPeriodMinutes = 60;
 }
 
-void Clock::run(Sign &sign, uint8_t layer){
+void Clock::run(Sign &sign, EffectData &data, uint8_t layer){
   unsigned long time = millis();
   if(time - lastUpdated < stepTime){ return; }
   this -> off(sign);

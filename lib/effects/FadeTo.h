@@ -8,7 +8,7 @@ class FadeTo : public Effect{
   public:
     FadeTo();
     void reset();
-    void run(Sign &sign, uint8_t layer);
+    void run(Sign &sign, EffectData &data, uint8_t layer);
     bool pushChar(char character, uint8_t layer);
     void randomize(uint8_t ci);
 

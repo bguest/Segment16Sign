@@ -19,7 +19,7 @@ void WavePixels::randomize(uint8_t ci){
   hueA[ci] = random16(INT16_MAX);
 }
 
-void WavePixels::run(Sign &sign, uint8_t ci){
+void WavePixels::run(Sign &sign, EffectData &data, uint8_t ci){
   uint16_t angle = (millis() % cycleTime[ci])*UINT16_MAX/cycleTime[ci];
 
   int16_t delta_hue = hueA[ci] * sin16(angle)/UINT16_MAX;

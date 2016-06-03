@@ -6,7 +6,7 @@ class Clock : public Effect{
   public:
     Clock();
     void reset();
-    void run(Sign &sign, uint8_t layer);
+    void run(Sign &sign, EffectData &data, uint8_t layer);
     bool pushChar(char character, uint8_t layer);
   private:
     bool isClock; //As Apposed to Timer

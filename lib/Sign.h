@@ -19,9 +19,12 @@ class Sign{
     void setLayer(uint8_t layer, bool isOn);
     Segment *segments[16*LETTERS_COUNT];
     char characters[LETTERS_COUNT];
+    void sanitize();
+
+    // Configs that could be moved to EffectData.h
     bool textChanged;
     bool onBeat;
-    void sanitize();
+
 
   private:
     Letter letters[LETTERS_COUNT];

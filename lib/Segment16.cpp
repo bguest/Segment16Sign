@@ -4,7 +4,7 @@
 #define DATA_PIN 11
 #define CLOCK_PIN 13
 
-Segment16::Segment16(void){
+Segment16::Segment16(){
   isInsertMode = false;
 };
 
@@ -22,6 +22,13 @@ void Segment16::init(){
 
   keyboard.init();
   sign.init();
+  sound.init();
+
+  for(uint8_t i=0; i<FREQ_COUNT; i++){
+    data.freqAmp[i]=0;
+    data.maxFreqAmp[i]=0;
+    data.rolloff = 99;
+  }
 
   uint16_t pixel_count = sign.pixelCount();
   FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, pixel_count);
@@ -32,6 +39,8 @@ void Segment16::run(){
   if(keyboard.isAvailable){
     this->pushChar(keyboard.data);
   }
+  sound.run(data);
+
   this->show();
   delay(5);
 }
@@ -42,7 +51,7 @@ void Segment16::pushChar(uint32_t character){
   if(isInsertMode){
     if(!effects.pushInsert(character)){
       sign.pushChar( (char)character, true);
-      effects.signWasUpdated(sign);
+      effects.signWasUpdated(sign, data);
     }
   }else{
     effects.pushChar(character);
@@ -51,7 +60,7 @@ void Segment16::pushChar(uint32_t character){
 
 void Segment16::show(){
 
-  effects.run(sign);
+  effects.run(sign, data);
 
   uint16_t currentPixel = 0;
   for(uint8_t i=0; i < LETTERS_COUNT; i++){

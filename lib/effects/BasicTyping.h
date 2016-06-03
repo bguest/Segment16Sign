@@ -7,7 +7,7 @@ class BasicTyping : public Effect{
 
   public:
     BasicTyping();
-    void run(Sign &sign, uint8_t layer);
+    void run(Sign &sign, EffectData &data, uint8_t layer);
 };
 
 #endif

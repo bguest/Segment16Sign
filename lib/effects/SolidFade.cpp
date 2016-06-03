@@ -19,7 +19,7 @@ void SolidFade::randomize(uint8_t ci){
   letterStep[ci] = random(50);
 }
 
-void SolidFade::run(Sign &sign, uint8_t ci){
+void SolidFade::run(Sign &sign, EffectData &data, uint8_t ci){
   CHSV clr = color[ci];
   fadeHue[ci] += fadeSpeed[ci];
   uint16_t hue16 = fadeHue[ci];

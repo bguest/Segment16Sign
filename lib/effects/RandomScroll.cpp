@@ -7,7 +7,7 @@ RandomScroll::RandomScroll(){
 void RandomScroll::reset(){
 }
 
-void RandomScroll::run(Sign &sign, uint8_t layer){
+void RandomScroll::run(Sign &sign, EffectData &data, uint8_t layer){
 
   sign.textChanged = true;
   char random_char = char(' ' + random8(95) );

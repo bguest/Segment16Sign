@@ -29,7 +29,7 @@ class Effect{
     virtual bool pushInsert(char character);
     virtual void reset();
     virtual void signWasUpdated(Sign &sign);
-    virtual void run(Sign &sign, uint8_t layer);
+    virtual void run(Sign &sign, EffectData &data, uint8_t layer);
     virtual void invertColors();
     virtual void randomize(uint8_t layer);
 

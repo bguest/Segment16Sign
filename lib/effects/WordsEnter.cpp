@@ -83,7 +83,7 @@ bool WordsEnter::pushChar(char character, uint8_t ci){
   return( usedSetting(desc, val) );
 }
 
-void WordsEnter::run(Sign &sign, uint8_t layer){
+void WordsEnter::run(Sign &sign, EffectData &data, uint8_t layer){
   if(beatIdx++ % numBeats > 0){ return;}
 
   sign.textChanged = true;

@@ -2,6 +2,7 @@
 #define EFFECTS_H
 
 #include "Sign.h"
+#include "EffectData.h"
 #include "Helpers.h"
 #include "effects/Effect.h"
 #include "effects/RandomOn.h"
@@ -48,8 +49,8 @@ class Effects {
     Effects();
     bool pushInsert(char character);
     void pushChar(char character);
-    void signWasUpdated(Sign &sign);
-    void run(Sign &sign);
+    void signWasUpdated(Sign &sign, EffectData &data);
+    void run(Sign &sign, EffectData &data);
 
   private:
     RandomOn randomOn;

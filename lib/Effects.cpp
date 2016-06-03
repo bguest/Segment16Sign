@@ -38,7 +38,7 @@ Effects::Effects(){
   this -> reset();
 }
 
-void Effects::run(Sign &sign){
+void Effects::run(Sign &sign, EffectData &data){
   unsigned long time = millis();
   if(time - lastRun < CYCLE_TIME){ return; }
   if(shouldRandomize && time - lastTouched > randomizeTime){
@@ -60,11 +60,11 @@ void Effects::run(Sign &sign){
     textLastRun = time;
   }
   if( sign.onBeat || textEffect == &basicTyping){
-    textEffect -> run(sign, 0);
+    textEffect -> run(sign, data, 0);
   }
 
   for(uint8_t i=0; i<LAYER_COUNT; i++){
-    colorEffect[i] -> run(sign, i);
+    colorEffect[i] -> run(sign, data, i);
   }
 }
 
@@ -125,10 +125,10 @@ void Effects::pushChar(char character){
 }
 
 // Called when new letters pushed to sign
-void Effects::signWasUpdated(Sign &sign){
+void Effects::signWasUpdated(Sign &sign, EffectData &data){
   textLastRun = 0;
   lastTouched = millis();
-  this -> run(sign);
+  this -> run(sign, data);
   textEffect -> signWasUpdated(sign);
 
   colorEffect[0] -> signWasUpdated(sign);

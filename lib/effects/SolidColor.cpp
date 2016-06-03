@@ -14,7 +14,7 @@ void SolidColor::randomize(uint8_t ci){
   this -> randomizeColor(ci);
 }
 
-void SolidColor::run(Sign &sign, uint8_t ci){
+void SolidColor::run(Sign &sign, EffectData &data, uint8_t ci){
   uint16_t seg_count = sign.segmentCount();
 
   bool on = (ci == 0);

@@ -4,7 +4,7 @@
 BasicTyping::BasicTyping(){
 }
 
-void BasicTyping::run(Sign &sign, uint8_t layer){
+void BasicTyping::run(Sign &sign, EffectData &data, uint8_t layer){
   uint8_t letters_count = sign.letterCount();
 
   // Set Characters

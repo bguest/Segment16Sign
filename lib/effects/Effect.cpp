@@ -8,7 +8,7 @@ Effect::Effect(){
 
 void Effect::reset(){
 }
-void Effect::run(Sign &sign, uint8_t layer){
+void Effect::run(Sign &sign, EffectData &data, uint8_t layer){
 }
 void Effect::signWasUpdated(Sign &sign){
 }

@@ -33,7 +33,7 @@ void FadedXY::invertColors(){
   }
 }
 
-void FadedXY::run(Sign &sign, uint8_t ci){
+void FadedXY::run(Sign &sign, EffectData &data, uint8_t ci){
 
   hueOffset[ci] += hueOffsetSpeed[ci];
 

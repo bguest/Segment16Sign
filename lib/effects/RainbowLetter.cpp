@@ -25,7 +25,7 @@ void RainbowLetter::randomize(uint8_t ci){
   hueA[ci] = random16(INT16_MAX/2);
 }
 
-void RainbowLetter::run(Sign &sign, uint8_t ci){
+void RainbowLetter::run(Sign &sign, EffectData &data, uint8_t ci){
   if( sign.textChanged ){ this -> signWasUpdated(sign, ci);}
 
   uint8_t letters_count = sign.letterCount();

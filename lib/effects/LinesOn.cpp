@@ -14,7 +14,7 @@ void LinesOn::randomize(uint8_t ci){
   orientation = random8(ORIENTATION_COUNT - 1);
 }
 
-void LinesOn::run(Sign &sign, uint8_t layer){
+void LinesOn::run(Sign &sign, EffectData &data, uint8_t layer){
   uint8_t seg_count = sign.segmentCount();
 
   if(changeOnBeat && sign.onBeat){

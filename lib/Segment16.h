@@ -6,6 +6,8 @@
 #include "Sign.h"
 #include "Effects.h"
 #include "Keyboard.h"
+#include "Sound.h"
+#include "EffectData.h"
 
 #define SAVED_INPUT_COUNT 2
 
@@ -23,8 +25,12 @@ class Segment16 {
     char input[SAVED_INPUT_COUNT];
     bool decideInput(char input);
     bool isInsertMode;
+
+    EffectData data;
+    Sound sound;
     Keyboard keyboard;
     Effects effects;
+
 };
 
 #endif

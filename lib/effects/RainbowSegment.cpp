@@ -23,7 +23,7 @@ void RainbowSegment::randomize(uint8_t ci){
   beatStep[ci] = random8(-120,120);
 }
 
-void RainbowSegment::run(Sign &sign, uint8_t layer){
+void RainbowSegment::run(Sign &sign, EffectData &data, uint8_t layer){
   if( sign.textChanged ){ this -> signWasUpdated(sign);}
   uint8_t segment_count = sign.segmentCount();
   CHSV curr_color = color[layer];

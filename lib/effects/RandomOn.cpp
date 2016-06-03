@@ -17,7 +17,7 @@ void RandomOn::randomize(uint8_t ci){
   turnOn = true;
 }
 
-void RandomOn::run(Sign &sign, uint8_t layer){
+void RandomOn::run(Sign &sign, EffectData &data, uint8_t layer){
   sign.textChanged = true;
 
   uint16_t seg_count = sign.segmentCount();

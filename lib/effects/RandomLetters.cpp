@@ -8,7 +8,7 @@ RandomLetters::RandomLetters(){
 void RandomLetters::reset(){
 }
 
-void RandomLetters::run(Sign &sign, uint8_t layer){
+void RandomLetters::run(Sign &sign, EffectData &data, uint8_t layer){
 
   sign.textChanged = true;
   uint8_t letters_count = sign.letterCount();

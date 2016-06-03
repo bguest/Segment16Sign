@@ -22,7 +22,7 @@ void FadeTo::randomize(uint8_t ci){
   }
 }
 
-void FadeTo::run(Sign &sign, uint8_t ci){
+void FadeTo::run(Sign &sign, EffectData &data, uint8_t ci){
   bool on = (ci == 0);
   uint16_t seg_count = sign.segmentCount();
   CHSV clr = color[ci];
