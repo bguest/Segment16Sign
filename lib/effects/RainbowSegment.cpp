@@ -67,7 +67,7 @@ bool RainbowSegment::pushChar(char character, uint8_t ci){
     case 'x': this -> randomize(ci);
               val = hueStep[ci];
               desc = RANDOM_STR; break;
-    case 'r': this -> reset();
+    case 'z': this -> reset();
               val = 1; desc = RESET_STR; break;
   }
   return( usedSetting(desc, val));

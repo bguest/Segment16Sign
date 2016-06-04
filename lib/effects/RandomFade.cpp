@@ -45,7 +45,7 @@ bool RandomFade::pushChar(char character, uint8_t ci){
   String desc;
 
   switch(character){
-    case 'r': val = 1; this->randomizeSpeeds();
+    case 'z': val = 1; this->randomizeSpeeds();
               desc = RESET_STR; break;
     case 'f': val = this -> incRandomSpeed(true, ci);
               desc = FADE_SPEED_STR; break;

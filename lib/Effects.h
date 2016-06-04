@@ -22,6 +22,7 @@
 #include "effects/Clock.h"
 #include "effects/RandomScroll.h"
 #include "effects/FadedXY.h"
+#include "effects/WaveXY.h"
 
 #define BASIC_TYPING 0
 #define RANDOM_ON 1
@@ -42,7 +43,8 @@
 #define FADE_TO 5
 #define WAVE_PIXELS 6
 #define FADED_XY 7
-#define COLOR_EFFECTS_COUNT 8
+#define WAVE_XY 8
+#define COLOR_EFFECTS_COUNT 9
 
 class Effects {
   public:
@@ -71,6 +73,7 @@ class Effects {
     FadeTo fadeTo;
     WavePixels wavePixels;
     FadedXY fadedXY;
+    WaveXY waveXY;
 
     Effect nullEffect;
     uint8_t curLayer;

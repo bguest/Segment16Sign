@@ -17,9 +17,10 @@ Its a work in progress. But in general the keyboard controls the 16 Segment Disp
 + `F`/`S`: Bigger / Smaller, less often
 
 + `X`: Randomize
++ `Z`: Should Randomize?
 + `I`: Invert
 + `R`: Reset
-+ `r`: Reset color only, sometimes
++ `z`: Reset color only, sometimes
 + `u`: Reset text only, sometimes
 + `/`: Randomize current text settings
 + `x`: Randomize current color settings

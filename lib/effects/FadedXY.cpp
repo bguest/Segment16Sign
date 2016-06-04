@@ -6,6 +6,8 @@ FadedXY::FadedXY(){
 
 void FadedXY::reset(){
   for(uint8_t i=0; i<LAYER_COUNT; i++){
+    color[i] = CHSV(128*i,255,255);
+
     hue[i][0] = 0; hue[i][1] = UINT16_MAX/2-1;
     hue[i][2] = UINT16_MAX/2-1; hue[i][3] = UINT16_MAX-1;
     hueOffset[i] = 1;

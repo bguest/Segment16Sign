@@ -1,5 +1,5 @@
 #define HUE_STEP 1
-#define VALUE_STEP 5
+#define VALUE_STEP 2
 #define PERIOD_STEP 3
 
 #define LETTERS_LAYER 0
@@ -24,6 +24,7 @@
 #include "effects/Clock.cpp"
 #include "effects/RandomScroll.cpp"
 #include "effects/FadedXY.cpp"
+#include "effects/WaveXY.cpp"
 
 const uint16_t CYCLE_TIME = 5;
 
@@ -287,7 +288,11 @@ void Effects::updateColorEffect(uint8_t ci){
       break;
     case FADED_XY:
       colorEffect[ci] = &fadedXY;
-      desc = "Faded XY\nKeys:09cCvVbBqQwWeErR";
+      desc = "Faded XY\nKeys:09cCvVbBqQwWeErRx";
+      break;
+    case WAVE_XY:
+      colorEffect[ci] = &waveXY;
+      desc = "Wave XY\nKeys:09cCvVbBqQwWfsFSdx";
       break;
   }
   Serial.println(desc);
