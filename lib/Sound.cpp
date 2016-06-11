@@ -5,7 +5,7 @@
 #define RESET A3
 #define AUDIO_OUT A1
 #define AUDIO_RAW A2
-#define USE_RAW_VOLUME 0
+#define USE_RAW_VOLUME 1
 
 const uint8_t ROLLOFF_DURRATION = 5;
 
@@ -40,28 +40,47 @@ void Sound::run(EffectData &data){
   uint16_t currAmp;
   uint16_t currVolume = 0;
 
+  digitalWrite(RESET, HIGH);
+  //digitalWrite(STROBE, HIGH);
+  //delayMicroseconds(18);
+  //digitalWrite(STROBE, LOW);
+  //delayMicroseconds(18);
+  delayMicroseconds(4);
+  digitalWrite(RESET, LOW);
+  digitalWrite(STROBE, HIGH);
+
   for(uint8_t i = 0; i<FREQ_COUNT; i++) {
+    delayMicroseconds(19);
+    digitalWrite(STROBE, LOW);
+    delayMicroseconds(30);
+
     currAmp = ( analogRead(AUDIO_OUT) + analogRead(AUDIO_OUT) )/2;
-#if USE_RAW_VOLUME
-    currVolume = ( analogRead(AUDIO_RAW) + analogRead(AUDIO_RAW) )/2;
-    if(currVolume > volume){
-      volume = currVolume;
-    }
-#else
-    currVolume += currAmp;
-#endif
     if (currAmp > freqAmp[i]){
       freqAmp[i] = currAmp;
     }
+    delayMicroseconds(20);
     digitalWrite(STROBE, HIGH);
-    digitalWrite(STROBE, LOW);
   }
+  //delayMicroseconds(18);
+  //digitalWrite(STROBE, LOW);
 
-#if USE_RAW_VOLUME == 0
+#if USE_RAW_VOLUME == 1
+  currVolume = ( analogRead(AUDIO_RAW) + analogRead(AUDIO_RAW) )/2;
+#else
+  for(uint8_t i=0; i<FREQ_COUNT; i++){
+    currVolume += freqAmp[i];
+  }
+#endif
   if(currVolume > volume){
     volume = currVolume;
   }
-#endif
+
+  // Debug Stuff
+  //for(uint8_t i=0; i<FREQ_COUNT; i++){
+    //Serial.print(freqAmp[i]);
+    //Serial.print(" ");
+  //}
+  //Serial.println();
 
   // Update if > Sound collect time
   unsigned long currMillis = millis();
