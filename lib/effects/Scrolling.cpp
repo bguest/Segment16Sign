@@ -7,11 +7,13 @@ Scrolling::Scrolling(){
 void Scrolling::reset(){
   numBeats = 2;
   beatIdx = 0;
+  randomLetterIdx = -1;
   this -> softReset();
 }
 
 void Scrolling::randomize(uint8_t ci){
   numBeats = random(0,10);
+  randomLetterIdx = random(-1,0);
 }
 
 void Scrolling::softReset(){
@@ -68,6 +70,8 @@ bool Scrolling::pushChar(char character, uint8_t ci){
       desc = STEP_SIZE_STR; break;
     case 'J': val = --numBeats;
       desc = STEP_SIZE_STR; break;
+    case 'y': val = randomLetterIdx = randomLetterIdx < 0 ? 0 : -1;
+      desc = RANDOM_STR; break;
     case '/': this -> randomize(ci);
       val = numBeats;
       desc = RANDOM_STR; break;
@@ -82,10 +86,37 @@ void Scrolling::run(Sign &sign, EffectData &data, uint8_t layer){
   sign.textChanged = true;
 
   char word[4];
-  for(uint8_t i=0; i< LETTERS_COUNT; i++){
-    uint8_t idx = (beatIdx+i) % charCount;
-    word[i] = buffer[idx];
+  if(randomLetterIdx >= 0){
+    this->setRandomLetter(word);
+  }else{
+    for(uint8_t i=0; i< LETTERS_COUNT; i++){
+      uint8_t idx = (beatIdx+i) % charCount;
+      word[i] = buffer[idx];
+    }
   }
 
   sign.setWord( String( word ) );
+}
+
+void Scrolling::setRandomLetter(char word[4]){
+
+  // Clear Word
+  for(uint8_t i=0; i<LETTERS_COUNT; i++){
+    word[i] = ' ';
+  }
+
+  // Get New Random Idx
+  uint8_t sample[LETTERS_COUNT-1];
+  uint8_t i = 0;
+  for(uint8_t j=0; j<LETTERS_COUNT; j++){
+    if(j != randomLetterIdx){
+      sample[i] = j;
+      i++;
+    }
+  }
+
+  randomLetterIdx = sample[random(LETTERS_COUNT-1)];
+  uint8_t letterIdx = beatIdx & charCount;
+  word[randomLetterIdx] = buffer[letterIdx];
+
 }

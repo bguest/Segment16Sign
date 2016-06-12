@@ -214,7 +214,7 @@ void Effects::updateTextEffect(){
       break;
     case SCROLLING:
       textEffect = &scrolling;
-      desc = F("Scrolling\nkeys:uKJ/");
+      desc = F("Scrolling\nkeys:uyKJ/");
       break;
     case LINES_ON:
       textEffect = &linesOn;
