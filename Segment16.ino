@@ -1,6 +1,6 @@
 #include <FastLED.h>
-#include <Segment16.h>
 
+#include <Segment16.h>
 Segment16 display;
 
 void setup(){

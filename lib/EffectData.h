@@ -1,7 +1,7 @@
 #ifndef EFFECT_DATA_H
 #define EFFECT_DATA_H
 
-#define FREQ_COUNT 7
+#define FREQ_COUNT 8
 
 #include "Arduino.h"
 
