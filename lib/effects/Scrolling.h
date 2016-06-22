@@ -20,12 +20,14 @@ class Scrolling : public Effect {
     void shiftLeft();
     void backspaceBuffer();
     void softReset();
+    void setRandomLetter(char word[4]);
 
     uint8_t numBeats;
     uint8_t beatIdx;
     uint8_t startIdx;
     uint8_t charCount;
     char buffer[SCROLL_LENGTH];
+    int8_t randomLetterIdx;
 
 };
 #endif
