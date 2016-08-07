@@ -8,6 +8,7 @@
 const uint8_t UINT8_MAX_2 = UINT8_MAX/2;
 
 struct EffectData{
+  uint16_t tempo;
   uint8_t rolloff;
   uint16_t volume;
   uint16_t maxVolume;

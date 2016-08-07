@@ -23,6 +23,7 @@
 #include "effects/RandomScroll.h"
 #include "effects/FadedXY.h"
 #include "effects/WaveXY.h"
+#include "effects/Seizure.h"
 
 #define BASIC_TYPING 0
 #define RANDOM_ON 1
@@ -44,7 +45,8 @@
 #define WAVE_PIXELS 6
 #define FADED_XY 7
 #define WAVE_XY 8
-#define COLOR_EFFECTS_COUNT 9
+#define SEIZURE 9
+#define COLOR_EFFECTS_COUNT 10
 
 class Effects {
   public:
@@ -74,6 +76,7 @@ class Effects {
     WavePixels wavePixels;
     FadedXY fadedXY;
     WaveXY waveXY;
+    Seizure seizure;
 
     Effect nullEffect;
     uint8_t curLayer;

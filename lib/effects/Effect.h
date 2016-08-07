@@ -21,6 +21,7 @@ const String HUE_AMP_STR = F("Hue Amp");
 const String ORIENT_STR = F("Orientation");
 const String ON_BEAT_STR = F("Change on Beat");
 const String HUE_PERIOD_STR = F("Hue Period");
+const String INDEX_STR = F("Index");
 const String X_STR = F("X:");
 const String Y_STR = F("Y:");
 

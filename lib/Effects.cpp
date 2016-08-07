@@ -25,6 +25,7 @@
 #include "effects/RandomScroll.cpp"
 #include "effects/FadedXY.cpp"
 #include "effects/WaveXY.cpp"
+#include "effects/Seizure.cpp"
 
 const uint16_t CYCLE_TIME = 5;
 
@@ -56,7 +57,8 @@ void Effects::run(Sign &sign, EffectData &data){
   }
 
   sign.onBeat = false;
-  if( time - textLastRun > textCycleTime){
+  data.tempo = textCycleTime;
+  if( time - textLastRun > data.tempo){
     sign.onBeat = true;
     textLastRun = time;
   }
@@ -293,6 +295,10 @@ void Effects::updateColorEffect(uint8_t ci){
     case WAVE_XY:
       colorEffect[ci] = &waveXY;
       desc = "Wave XY\nKeys:09cCvVbBqQwWfsFSdx";
+      break;
+    case SEIZURE:
+      colorEffect[ci] = &seizure;
+      desc = "Seizure\nKeys:09cCvVbBfsFSxz";
       break;
   }
   Serial.println(desc);

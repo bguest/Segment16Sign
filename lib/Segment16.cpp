@@ -29,6 +29,7 @@ void Segment16::init(){
     data.maxFreqAmp[i]=0;
     data.rolloff = 99;
   }
+  data.tempo = 500;
 
   uint16_t pixel_count = sign.pixelCount();
   FastLED.addLeds<WS2801, DATA_PIN, CLOCK_PIN, RGB>(leds, pixel_count);
