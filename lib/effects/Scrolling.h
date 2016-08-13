@@ -20,6 +20,7 @@ class Scrolling : public Effect {
     void shiftLeft();
     void backspaceBuffer();
     void softReset();
+    void setRandomBuffer();
     void setRandomLetter(char word[4]);
 
     uint8_t numBeats;

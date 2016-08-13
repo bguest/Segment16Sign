@@ -25,6 +25,15 @@ const String INDEX_STR = F("Index");
 const String X_STR = F("X:");
 const String Y_STR = F("Y:");
 
+const uint8_t BROKEN_RECORDS_COUNT = 5;
+const String BROKEN_RECORDS[BROKEN_RECORDS_COUNT] = {
+  F("Ravin' Ain't Easy"),      // 1
+  F("Disco Knights"),          // 2
+  F("DIRT RAVE"),             // 3
+  F("Keep it tidy"),           // 4
+  F("Love HRDR"),              // 5
+};
+
 class Effect{
   public:
     Effect();

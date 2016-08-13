@@ -12,7 +12,8 @@ void Scrolling::reset(){
 }
 
 void Scrolling::randomize(uint8_t ci){
-  numBeats = random(0,10);
+  this -> setRandomBuffer();
+  numBeats = random(0,6);
   randomLetterIdx = random(-1,0);
 }
 
@@ -21,6 +22,19 @@ void Scrolling::softReset(){
 
   for(uint8_t j=0; j<SCROLL_LENGTH; j++){
     buffer[j] = ' ';
+  }
+}
+
+void Scrolling::setRandomBuffer(){
+  String random_str = BROKEN_RECORDS[random(BROKEN_RECORDS_COUNT-1)];
+  uint8_t str_len = random_str.length();
+  this -> softReset();
+  for(uint8_t i=0; i<str_len; i++){
+    this -> pushToBuffer(random_str.charAt(i));
+  }
+  // Add Space After Word
+  for(uint8_t i=0; i<LETTERS_COUNT; i++){
+    this -> pushToBuffer(' ');
   }
 }
 
@@ -81,7 +95,7 @@ bool Scrolling::pushChar(char character, uint8_t ci){
 }
 
 void Scrolling::run(Sign &sign, EffectData &data, uint8_t layer){
-  if(beatIdx++ % numBeats > 0){ return;}
+  if(++beatIdx % numBeats > 0){ return;}
 
   sign.textChanged = true;
 
@@ -90,7 +104,7 @@ void Scrolling::run(Sign &sign, EffectData &data, uint8_t layer){
     this->setRandomLetter(word);
   }else{
     for(uint8_t i=0; i< LETTERS_COUNT; i++){
-      uint8_t idx = (beatIdx+i) % charCount;
+      uint8_t idx = (beatIdx/numBeats + i) % charCount;
       word[i] = buffer[idx];
     }
   }
@@ -116,7 +130,7 @@ void Scrolling::setRandomLetter(char word[4]){
   }
 
   randomLetterIdx = sample[random(LETTERS_COUNT-1)];
-  uint8_t letterIdx = beatIdx & charCount;
+  uint8_t letterIdx = (beatIdx/numBeats) % charCount;
   word[randomLetterIdx] = buffer[letterIdx];
 
 }
